@@ -45,6 +45,11 @@ apt-get install -y libks libstirshaken1 libuuid1 \
 
 ## Serving the certificates
 
+You can either bring your own certificates, or generate a test CA and the corresponding certs within
+the test suite.
+
+### Using your own certificates
+
 Copy your certificates and private keys into `certs/sp`, so the test suite can find them and use them to
 sign the messages.
 
@@ -76,6 +81,54 @@ cp /path/to/untrusted.pm certs/sp/untrusted.pem
 
 # and the corresponding priv key for the untrusted cert
 cp /path/to/untrusted.key certs/sp/untrusted.key
+
+### here go some auto-generated fake certificates we'll need
+
+# an empty certificate
+> certs/sp/empty.pem
+
+# a certificate full of garbage
+> certs/sp/garbage.pem
+for i in $(seq 0 4096); do echo -n a >> certs/sp/garbage.pem; done
+```
+
+### Generating fresh CA and SP certificates
+
+Don't copy/paste this, as it will require user input on create-ca.sh. Rather, put
+it in a file and execute it (we'll create a helper script around that in the future).
+
+```
+# set up a new CA
+./helpers/create-ca.sh
+
+# create a valid certificate
+./helpers/create-cert.sh 365
+cp certs/ca/temp/cert.pem certs/ca/temp/priv.pem certs/sp/
+
+# again the valid certificate, but we'll serve this on
+# a different port, and to avoid caching on the client
+# side, we use a different name
+cp certs/sp/cert.pm certs/sp/copyofcert.pem
+
+# an expired certificate with the same key as above
+./helpers/create-cert.sh 365 -3650 1
+cp certs/ca/temp/cert.pem certs/sp/expired.pem
+
+# a certificate valid only in the future, with same key as above
+./helpers/create-cert.sh 365 +3650 1
+cp certs/ca/temp/cert.pem certs/sp/future.pem
+
+# create a new untrusted CA and cert
+mkdir certs/ca/cabak && mv certs/ca/*.pem certs/ca/cabak
+./helpers/create-ca.sh
+./helpers/create-cert.sh 365
+cp certs/ca/temp/cert.pem certs/sp/untrusted.pem
+cp certs/ca/temp/priv.pem certs/sp/untrusted.key
+mv certs/ca/cacert.pem certs/ca/untrusted-cacert.pem
+mv certs/ca/cakey.pem certs/ca/untrusted-cakey.pem
+mv certs/ca/cacert.srl certs/ca/untrusted-cacert.srl
+mv certs/ca/cabak/*.pem certs/ca
+rm -rf certs/ca/cabak
 
 ### here go some auto-generated fake certificates we'll need
 
