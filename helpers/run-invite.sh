@@ -10,6 +10,14 @@ if [ -z "$SIPP" ]; then
     usage
     exit 1
 fi
+if [[ "$SIPP" = ./* ]]; then
+    SIPP="$PWD/$SIPP"
+fi
+if ! [ -x "$SIPP" ]; then
+    echo "Invalid sipp path '$SIPP', does not exist or not executable"
+    exit 1
+fi
+
 
 S=$2
 if [ -z "$S" ]; then
@@ -55,6 +63,12 @@ if ! [ -d "$BASE" ]; then
     exit 1
 fi
 
+WD=$BASE
+if [[ "$BASE" = ./* ]]; then
+    WD="$PWD/$BASE"
+    S="$PWD/$S"
+fi
+
 pushd $BASE
 $SIPP -nd -aa -base_cseq 1 -fd 1 -p 5060 \
     -r 1 -m 1 \
@@ -62,7 +76,7 @@ $SIPP -nd -aa -base_cseq 1 -fd 1 -p 5060 \
     -key target_uri "$URI" $KEYS \
     -key current_date "$(env TZ=GMT date '+%a, %e %b %Y %T %Z')" \
     -sf "$S" \
-    -inf "$BASE/caller.csv" \
-    -inf "$BASE/callee.csv" \
+    -inf "$WD/caller.csv" \
+    -inf "$WD/callee.csv" \
     "$T"
 popd
