@@ -1,7 +1,25 @@
 #!/bin/bash -e
 
-START_AT="-3650d"
-VALID_DAYS="365"
+# This script is based on the work of Liviu Chricu <liviu@opensips.org>
+
+function usage () {
+    echo "Usage: $0 <days-valid> [days-shift]"
+    echo "  days-valid: How many days the cert is valid from start date"
+    echo "  days-shift: How many days to shift the start date back (eg -365) or forth (eg +365) from today"
+    echo ""
+    echo "Example: $0 365"
+    echo "   Certificate is valid from today for 365 days"
+    echo "Example: $0 365 -3650"
+    echo "   Certificate was valid from 10 years ago today for 365 days"
+}
+
+VALID_DAYS=$1
+START_AT=$2
+
+if [ -z "$VALID_DAYS" ]; then
+    usage
+    exit 1
+fi
 
 BD=$(dirname "$0")
 
@@ -39,12 +57,13 @@ openssl req -new -nodes -key priv.pem -keyform PEM \
 
 FT=""
 if [ "$START_AT" != "" ]; then
+    START_AT="${START_AT}d"
     FT_LIB="$(dpkg -L libfaketime | grep libfaketime.so.1)"
     if [ "$FT_LIB" = "" ]; then
         echo "Failed to find libfaketime.so.1, maybe libfaketime is not installed?"
         exit 1
     fi
-    FT="LD_PRELOAD=$FT_LIB FAKETIME=$START_AT"
+    FT="env LD_PRELOAD=$FT_LIB FAKETIME=$START_AT"
 fi
 
 $FT openssl x509 -req -in csr.pem -CA ../cacert.pem -CAkey ../cakey.pem -CAcreateserial \

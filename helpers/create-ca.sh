@@ -1,5 +1,7 @@
 #!/bin/bash -e
 
+# This script is based on the work of Liviu Chricu <liviu@opensips.org>
+
 BD=$(dirname "$0")
 
 CA_DIR="$BD/../certs/ca"
