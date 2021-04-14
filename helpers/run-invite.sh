@@ -48,7 +48,8 @@ elif [ "$MOD" = "wrongppt" ]; then
     KEYS="-key custom_identity Identity:$PASSPORT;info=<http://sipp.opensipit.sipfront.org/cert.pem>;alg=ES256;ppt=foobar"
 fi
 
-BASE="/home/admin/helpers/run/$T"
+BD="$(dirname $0)"
+BASE="$BD/runs/$T"
 if ! [ -d "$BASE" ]; then
     echo "Base $BASE does not exist, please create it first and copy caller/callee.csv there"
     exit 1
