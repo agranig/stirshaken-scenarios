@@ -13,6 +13,15 @@ perl -pi -e 's/sipp.opensipit.sipfront.org\/cert.pem/url.of.your\/cert.pem/' hel
 perl -pi -e 's/sipp.opensipit.sipfront.org\/cert.pem/url.of.your\/cert.pem/' scenarios/*
 ```
 
+Also, due to a (for now) hardcoded path in SIPp, this repo must be cloned into your
+local path `/home/admin/stirshaken-scenarios`, otherwise it will NOT work.
+
+```
+mkdir -p /home/admin/
+cd /home/admin
+git clone https://github.com/agranig/stirshaken-scenarios.git
+```
+
 ## Prerequisites
 
 On Debian buster, install the dependencies as follows.
