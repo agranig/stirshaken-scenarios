@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-# This script is based on the work of Liviu Chricu <liviu@opensips.org>
+# This script is based on the work of Liviu Chircu <liviu@opensips.org>
 
 function usage () {
     echo "Usage: $0 <days-valid> [days-shift]"
