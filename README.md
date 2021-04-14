@@ -47,8 +47,6 @@ SEQUENTIAL
 $CALLED_ID;$TARGET;$CALLED_ID
 EOF
 
-mkdir "runs/$TARGET"
-
 for test in *.sh; do ./$test "$TARGET"; sleep 1; done
 ```
 
