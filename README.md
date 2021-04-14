@@ -38,7 +38,9 @@ deb-src http://files.freeswitch.org/repo/deb/debian-release/ buster main
 EOF
 
 apt-get update
-apt-get install -y libks libstirshaken1 libuuid1 libcrypt-jwt-perl libdata-uuid-perl libcryptx-perl
+apt-get install -y libks libstirshaken1 libuuid1 \
+    libcrypt-jwt-perl libdata-uuid-perl libcryptx-perl \
+    libfaketime
 ```
 
 ## Serving the certificates

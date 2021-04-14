@@ -1,1 +1,5 @@
 runs/*
+certs/ca/*
+certs/sp/*
+certs/crl/*
+certs/cache/*
