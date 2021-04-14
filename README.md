@@ -1,5 +1,18 @@
 # STIR/SHAKEN Test Suite
 
+## WARNING
+
+This version still has `sipp.opensipit.sipfront.org` as x5u URL scattered all around the code and
+scenarios and will be made configurable in the future.
+
+For now, run a quick hacky search/replace over it, like so:
+
+```
+perl -pi -e 's/sipp.opensipit.sipfront.org\/cert.pem/url.of.your\/cert.pem/' *
+perl -pi -e 's/sipp.opensipit.sipfront.org\/cert.pem/url.of.your\/cert.pem/' helpers/*
+perl -pi -e 's/sipp.opensipit.sipfront.org\/cert.pem/url.of.your\/cert.pem/' scenarios/*
+```
+
 ## Prerequisites
 
 On Debian buster, install the dependencies as follows.
