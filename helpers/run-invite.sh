@@ -49,7 +49,7 @@ elif [ "$MOD" = "wrongppt" ]; then
 fi
 
 BD="$(dirname $0)"
-BASE="$BD/runs/$T"
+BASE="$BD/../runs/$T"
 if ! [ -d "$BASE" ]; then
     echo "Base $BASE does not exist, please create it first and copy caller/callee.csv there"
     exit 1
