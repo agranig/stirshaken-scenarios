@@ -14,6 +14,7 @@
             Contact: <sip:[field0 file="caller.csv"]@[local_ip]:[local_port]>
             User-Agent: sipfront.com
             Identity: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.ccccccccccccccccccccccccccccc
+            Date: [current_date]
             Content-Type: application/sdp
             Content-Length: [len]
   

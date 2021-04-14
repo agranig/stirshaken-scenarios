@@ -14,6 +14,7 @@
             Contact: <sip:[field0 file="caller.csv"]@[local_ip]:[local_port]>
             User-Agent: sipfront.com
             Identity: eyJhbGciOiJFUzI1NiIsInBwdCI6InNoYWtlbiIsInR5cCI6InBhc3Nwb3J0IiwieDV1IjoiaHR0cDovL3NpcHAub3BlbnNpcGl0LnNpcGZyb250Lm9yZy9jZXJ0LnBlbSJ9.eyJhdHRlc3QiOiJCIiwiZGVzdCI6eyJ0biI6WyI0Mzk5OTEwMDEiXX0sImlhdCI6MTYxODMxODExNSwib3JpZyI6eyJ0biI6IjQzOTk5MTAwMSJ9LCJvcmlnaWQiOiJmYmEzNGE4NC1mN2Y2LTQyN2MtYWY5Zi1jNWRlYzUzMzJlYzgifQ.aaaaaaaaaaaaaaaaaaaaaaaa
+            Date: [current_date]
             Content-Type: application/sdp
             Content-Length: [len]
   

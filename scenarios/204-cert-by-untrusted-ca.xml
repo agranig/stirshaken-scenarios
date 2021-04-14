@@ -14,6 +14,7 @@
             Contact: <sip:[field0 file="caller.csv"]@[local_ip]:[local_port]>
             User-Agent: sipfront.com
             [identity x5u="http://sipp.opensipit.sipfront.org/untrusted.pem" attest="B" origtn_file="caller.csv" origtn_field="2" desttn_file="callee.csv" desttn_field="2" keypath="/home/admin/helpers/certs/sp/untrusted.key"]
+            Date: [current_date]
             Content-Type: application/sdp
             Content-Length: [len]
   
