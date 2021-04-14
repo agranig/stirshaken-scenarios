@@ -51,6 +51,9 @@ cp /path/to/cert.pm certs/sp/copyofcert.pem
 # the private key belonging to your valid certificate
 cp /path/to/priv.key certs/sp/priv.pem
 
+# the ca certificate for your valid certificate
+cp /path/to/cacert.pem certs/ca/cacert.pem
+
 # an expired certificate with the same key as above
 cp /path/to/expired.pem certs/sp/expired.pem
 
