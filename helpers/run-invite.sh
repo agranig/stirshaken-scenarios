@@ -74,7 +74,7 @@ $SIPP -nd -aa -base_cseq 1 -fd 1 -p 5060 \
     -r 1 -m 1 \
     -trace_err -trace_msg \
     -key target_uri "$URI" $KEYS \
-    -key current_date "$(env TZ=GMT date '+%a, %e %b %Y %T %Z')" \
+    -key current_date "$(env LC_ALL=C TZ=GMT date '+%a, %e %b %Y %T %Z')" \
     -sf "$S" \
     -inf "$WD/caller.csv" \
     -inf "$WD/callee.csv" \
