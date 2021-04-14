@@ -50,12 +50,12 @@ CALLED_ID="439991002"
 
 mkdir -p "runs/$TARGET"
 
-cat <<EOF > "runs/$TARGET/caller.csv
+cat <<EOF > "runs/$TARGET/caller.csv"
 SEQUENTIAL
 $CALLER_ID;$TARGET;$CALLER_ID
 EOF
 
-cat <<EOF > "runs/$TARGET/callee.csv
+cat <<EOF > "runs/$TARGET/callee.csv"
 SEQUENTIAL
 $CALLED_ID;$TARGET;$CALLED_ID
 EOF
