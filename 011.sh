@@ -1,7 +1,7 @@
 #!/bin/sh
 
 BD="$(dirname $0)"
-S="$BD/scenarios/stirshaken/011-invalid-jwt.xml"
+S="$BD/scenarios/011-invalid-jwt.xml"
 
 T=$1
 if [ -z "$T" ]; then
