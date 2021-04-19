@@ -1,5 +1,15 @@
 # STIR/SHAKEN Test Suite
 
+## About
+
+This project implements a test suite to verify the correctness and robustness of STIR/SHAKEN
+verification and authorization service implementations in line with the following RFCs:
+
+* RFC 8224 - Authenticated Identity Management in the Session Initiation Protocol (SIP)
+* RFC 8225 - PASSporT: Personal Assertion Token
+* RFC 8226 - Secure Telephone Identity Credentials: Certificates
+* RFC 8588 - Personal Assertion Token (PaSSporT) Extension for Signature-based Handling of Asserted information using toKENs (SHAKEN)
+
 ## WARNING
 
 This version still has `sipp.opensipit.sipfront.org` as x5u URL scattered all around the code and
