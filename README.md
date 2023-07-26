@@ -23,34 +23,19 @@ perl -pi -e 's/sipp.opensipit.sipfront.org\/cert.pem/url.of.your\/cert.pem/' hel
 perl -pi -e 's/sipp.opensipit.sipfront.org\/cert.pem/url.of.your\/cert.pem/' scenarios/*
 ```
 
-Also, due to a (for now) hardcoded path in SIPp, this repo must be cloned into your
-local path `/home/admin/stirshaken-scenarios`, otherwise it will NOT work.
-
-```
-mkdir -p /home/admin/
-cd /home/admin
-git clone https://github.com/agranig/stirshaken-scenarios.git
-```
-
 ## Prerequisites
 
-On Debian buster, install the dependencies as follows.
+This project uses Docker to build the test environment:
 
 ```
-# libks and libstirshaken1 are from the freeswitch repo
-apt-get update
-apt-get install -y gnupg2 wget lsb-release
-wget -O - https://files.freeswitch.org/repo/deb/debian-release/fsstretch-archive-keyring.asc | apt-key add -
+# Build the Docker image from the Dockerfile
+make build
 
-cat <<EOF > /etc/apt/sources.list.d/freeswitch.list
-deb http://files.freeswitch.org/repo/deb/debian-release/ buster main
-deb-src http://files.freeswitch.org/repo/deb/debian-release/ buster main
-EOF
+# Run the test suite in a Docker container
+make run
 
-apt-get update
-apt-get install -y libks libstirshaken1 libuuid1 \
-    libcrypt-jwt-perl libdata-uuid-perl libcryptx-perl \
-    libfaketime
+# Run a shell in the Docker container
+make shell
 ```
 
 ## Serving the certificates
