@@ -157,10 +157,12 @@ which are used throughout the tests:
 
 ```
 # in one terminal
-helpers/run-httpserver.sh 80
+cd certs/sp
+../..helpers/run-httpserver.sh 80
 
 # in another terminal
-helpers/run-httpserver.sh 8080
+cd certs/sp
+../../helpers/run-httpserver.sh 8080
 ```
 
 ## Usage
