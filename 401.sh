@@ -1,7 +1,7 @@
 #!/bin/sh
 
 BD="$(dirname $0)"
-S="$BD/scenarios/stirshaken/400-attest-missing.xml"
+S="$BD/scenarios/401-attest-empty.xml"
 
 T=$1
 if [ -z "$T" ]; then
