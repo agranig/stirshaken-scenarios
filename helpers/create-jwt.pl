@@ -25,7 +25,7 @@ my $payload = {};
 
 $header->{alg} = 'ES256';
 $header->{ppt} = 'shaken';
-$header->{type} = 'passport';
+$header->{typ} = 'passport';
 
 sub usage {
     print "$0 <args>\n".
