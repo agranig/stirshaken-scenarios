@@ -158,7 +158,7 @@ which are used throughout the tests:
 ```
 # in one terminal
 cd certs/sp
-../..helpers/run-httpserver.sh 80
+../../helpers/run-httpserver.sh 80
 
 # in another terminal
 cd certs/sp
